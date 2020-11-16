@@ -1,0 +1,108 @@
+plugins {
+  id 'checkstyle'
+  id 'eclipse'
+  id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+  id 'jacoco'
+  id 'java'
+  id 'org.sonarqube' version '2.8'
+  id 'org.springframework.boot' version '2.4.0'
+  id 'war'
+}
+
+group = 'com.allenie'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+defaultTasks 'compileJava', 'cleanEclipse', 'eclipse'
+
+configurations {
+  developmentOnly
+  runtimeClasspath {
+    extendsFrom developmentOnly
+  }
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
+}
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  compileOnly 'org.projectlombok:lombok'
+  annotationProcessor 'org.projectlombok:lombok'
+  developmentOnly 'org.springframework.boot:spring-boot-devtools'
+  providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+configurations.all {
+  resolutionStrategy.cacheDynamicVersionsFor 0, 'minutes'
+}
+
+test {
+  useJUnitPlatform()
+  reports.html.destination = file("$buildDir/reports/testReport")
+  def profile = project.properties['PROFILE']
+  if (profile != null) {
+    jvmArgs = [
+      '-Dspring.profiles.active=' + profile
+    ]
+  }
+}
+
+bootRun {
+  classpath = sourceSets.test.runtimeClasspath
+  def profile = project.properties['PROFILE']
+  if (profile != null) {
+    jvmArgs = [
+      '-Dspring.profiles.active=' + profile
+    ]
+  }
+}
+
+bootWar {
+  enabled = false
+}
+
+war {
+  enabled = true
+}
+
+checkstyle {
+  toolVersion = '8.29'
+  ignoreFailures = true
+  configFile = file("$projectDir/config/checkstyle/google_checks.xml")
+  reportsDir = file("$buildDir/reports/checkstyle")
+  checkstyleTest.enabled = false
+}
+
+jacoco {
+  toolVersion = "0.8.5"
+  reportsDir = file("$buildDir/reports/jacoco")
+}
+jacocoTestReport {
+  reports {
+    xml.enabled = true
+    csv.enabled = false
+    html.destination file("$buildDir/reports/jacocoHtml")
+  }
+  afterEvaluate {
+    classDirectories.from = files(classDirectories.files.collect {
+      fileTree(dir: it,
+      exclude: [
+        '**/dto/**',
+        '**/entity/**',
+      ])
+    })
+  }
+}
+
+javadoc {
+  options.charSet = 'UTF-8'
+  options.encoding = 'UTF-8'
+  destinationDir file("$buildDir/reports/javadoc")
+}

@@ -1,0 +1,47 @@
+# Specifies files to intentionally ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+### Build tools
+.gradle
+build
+
+### IDE/Editor
+.apt_generated
+.checkstyle
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cachebin/
+.idea
+*.iws
+*.iml
+*.ipr
+bin/
+out/
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+logs/
+*.log
+.vscode/*
+!.vscode/extensions.json
+
+
+### Backup files
+*.bk
+*.bak
+*.old
+
+
+### OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.dump
+
+WEB-INF/web.xml
+
