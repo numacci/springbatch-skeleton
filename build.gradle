@@ -31,11 +31,12 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springframework.boot:spring-boot-starter-batch'
   compileOnly 'org.projectlombok:lombok'
   annotationProcessor 'org.projectlombok:lombok'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+  testImplementation 'org.springframework.batch:spring-batch-test'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -51,6 +52,9 @@ test {
     jvmArgs = [
       '-Dspring.profiles.active=' + profile
     ]
+  }
+  if (project.hasProperty('args')) {
+    args project.args.split('\\s+')
   }
 }
 

@@ -1,8 +1,0 @@
-spring:
-  http:
-    encoding:
-      enabled: true
-      charset: UTF-8
-      force: true
-  main:
-    allow-bean-definition-overriding: true

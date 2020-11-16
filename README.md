@@ -1,8 +1,8 @@
-# SpringBoot Skeleton
+# SpringBatch Skeleton
 
 ### Summary
 
-This is a skeleton project for SpringBoot. Typical packages like `com.allenie.api.controller` or `com.allenie.api.services` are already generated and some developer tools like `checkstyle` or `sonarqube` are installed.
+This is a skeleton project for SpringBatch. Some developer tools like `checkstyle` or `sonarqube` are installed.
 
 ### Prerequisites
 
@@ -17,7 +17,7 @@ Execute following command at the root directory.
 $ ./gradlew
 ```
 
-### How to run Spring Boot Application
+### How to run Spring Batch Application
 
 Run the `main` method or run the following command at the root directory. Environmental profiles can be specified by `-PPROFILE` option.
 
