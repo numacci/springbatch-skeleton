@@ -6,7 +6,6 @@ plugins {
   id 'java'
   id 'org.sonarqube' version '2.8'
   id 'org.springframework.boot' version '2.4.0'
-  id 'war'
 }
 
 group = 'com.allenie'
@@ -35,7 +34,6 @@ dependencies {
   compileOnly 'org.projectlombok:lombok'
   annotationProcessor 'org.projectlombok:lombok'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
-  providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
   testImplementation 'org.springframework.batch:spring-batch-test'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
@@ -66,14 +64,6 @@ bootRun {
       '-Dspring.profiles.active=' + profile
     ]
   }
-}
-
-bootWar {
-  enabled = false
-}
-
-war {
-  enabled = true
 }
 
 checkstyle {
