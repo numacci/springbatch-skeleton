@@ -1,4 +1,4 @@
-package com.allenie.batch.helloworld;
+package com.numacci.batch.helloworld;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

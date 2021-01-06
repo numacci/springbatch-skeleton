@@ -1,4 +1,4 @@
-package com.allenie.batch.helloworld;
+package com.numacci.batch.helloworld;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;

@@ -26,6 +26,8 @@ $ ./gradlew bootRun
 $ ./gradlew bootRun -PPROFILE=dev # Profiles can be specified
 ```
 
+You may see `Hello World Tasklet!` log in your console.
+
 ### Development tools
 
 Following tools are ready in this project. Each report will be generated at `$projectDir/build/reports/` directory.
